@@ -1,0 +1,54 @@
+{
+  "name": "app-bet-brain-extraction",
+  "github": "gamorosino/app-bet-brain-extraction",
+  "desc": "Skull-strip a T1w volume using FSL's bet, with a configurable fractional intensity threshold and optional robust brain-center estimation / bias-field+neck cleanup.",
+  "config": {
+    "t1": {
+      "type": "input",
+      "file_id": "t1",
+      "input_id": "t1"
+    },
+    "frac": {
+      "id": "frac",
+      "type": "number",
+      "min": 0,
+      "max": 1,
+      "default": 0.5,
+      "advanced": false,
+      "desc": "BET fractional intensity threshold (0-1, default 0.5)"
+    },
+    "robust": {
+      "id": "robust",
+      "type": "boolean",
+      "default": false,
+      "advanced": false,
+      "desc": "Use BET's robust brain-center estimation (-R)"
+    },
+    "bias_neck_cleanup": {
+      "id": "bias_neck_cleanup",
+      "type": "boolean",
+      "default": false,
+      "advanced": true,
+      "desc": "Bias field + neck cleanup (-B)"
+    }
+  },
+  "inputs": [
+    {
+      "id": "t1",
+      "datatype": "neuro/anat/t1w",
+      "datatype_tags": [],
+      "optional": false,
+      "multi": false,
+      "advanced": false
+    }
+  ],
+  "outputs": [
+    {
+      "id": "t1_brain",
+      "desc": "Skull-stripped T1w volume produced by FSL's bet.",
+      "datatype": "neuro/anat/t1w",
+      "datatype_tags": [],
+      "archive": true
+    }
+  ]
+}
