@@ -6,4 +6,4 @@ __pycache__/
 config.json
 
 # app output directory
-out_dir/
+t1_brain/
